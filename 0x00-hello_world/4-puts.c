@@ -1,6 +1,9 @@
 #include <stdio.h>
-/** i'm printing and learnig
- * C programming
+
+/** 
+ * main - Entry point
+ * 
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
