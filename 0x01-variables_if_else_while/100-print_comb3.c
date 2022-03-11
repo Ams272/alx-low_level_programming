@@ -11,20 +11,20 @@ int main(void)
 	int fl;
 	int ll;
 
-	for (ch = 0; ch <= 98; ch++)
+	for (ch = 0; ch <= 100; ch++)
 	{
 		ll = ch % 10;
-		if (ch >= 10)
-		{
-			fl = ch / 10;
-			if (fl != ll && fl < ll && ch != 90)
+		fl = ch / 10;
+			if (fl < ll)
 			{
-				putchar(ch + '0');
+				putchar(fl + '0');
+				putchar(ll + '0');
+				if (ch < 89)
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
-		} else
-		{
-			putchar(ch + '0');
-		}
 	}
 	putchar('\n');
 	return (0);
