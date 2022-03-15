@@ -13,9 +13,8 @@
 int isalpha(int);
 int _isalpha(int c)
 {
-	if (c == isalpha(c))
-	{
+	if ((c > 96 && c < 123) || (c > 64 && c < 91))
 		return (1);
-	}
-	return (0);
+	else
+		return (0);
 }
