@@ -3,7 +3,7 @@
 #include <math.h>
 
 /**
- * main - main 
+ * main - main
  *
  * Return: 0
  */
