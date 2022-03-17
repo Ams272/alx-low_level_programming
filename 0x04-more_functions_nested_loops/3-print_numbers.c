@@ -7,8 +7,9 @@
  */
 void print_numbers(void)
 {
-	for (int i = 0; i <= 9; i++)
+	for (char i = 0; i <= 9; i++)
 	{
-		printf("%d\n", i);
+		_putchar(i);
 	}
+	_putchar('\n');
 }
