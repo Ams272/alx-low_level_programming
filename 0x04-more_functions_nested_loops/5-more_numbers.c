@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "main.h"
 
-/** 
+/**
  * more_numbers - more
  * Return: void
- * 
+ *
  */
 void more_numbers(void)
 {
