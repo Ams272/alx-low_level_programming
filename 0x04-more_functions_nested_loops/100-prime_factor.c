@@ -16,6 +16,6 @@ int main(void)
 			i--;
 		}
 	}
-	printf("lu\n", i);
+	printf("%lu\n", i);
 	return (0);
 }
