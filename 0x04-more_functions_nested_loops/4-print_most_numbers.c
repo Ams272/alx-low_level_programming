@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <main.h>
+#include "main.h"
 
 /**
  * print_most_numbers - most no
@@ -13,8 +13,8 @@ void print_most_numbers(void)
 	{
 		if (i != '2' && i != '4')
 		{
-			_putchat(i);
+			_putchar(i);
 		}
-		_putchar('\n');
 	}
+	_putchar('\n');
 }
