@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include "main.h"
+
+/**
+ * _memset - memset func
+ * @s: firsst arg
+ * @b: second arg
+ * @n: last arg
+ *
+ * Return: something
+ */
+
+char *_memset(char *s, char b, unsigned int n)
+{
+	int i = 0;
+
+	for (int n; n > 0; n--)
+	{
+		s[i] = b;
+		i++;
+		n--;
+	}
+	return(s);
+}
