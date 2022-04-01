@@ -1,15 +1,15 @@
 #include <stdio.h>
 
 /**
- * main - print name
+ * main - main func
  * @argc: counter
  * @argv: array
  *
- * Return: integer
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	argc = argc;
-	printf("%s\n", *argv);
+	argv = argv;
+	printf("%d\n", argc);
 	return (0);
 }
