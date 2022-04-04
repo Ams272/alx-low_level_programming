@@ -1,85 +1,75 @@
+#include "holberton.h"
 #include <stdlib.h>
-
 /**
- * strtow - char
- * @str: pointer to string params
- * Return: char
- */
-
+ * wordCounterRec - count num of words recursively
+ * @str: pointer to char
+ * @i: current index
+ * Return: number of words
+ **/
+int wordCounterRec(char *str, int i)
+{
+	if (str[i] == '\0')
+		return (0);
+	if (str[i] == ' ' && str[i + 1] != ' ' && str[i + 1] != '\0')
+		return (1 + wordCounterRec(str, i + 1));
+	return (wordCounterRec(str, i + 1));
+}
+/**
+ * word_counter - counts number of words in 1d array of strings
+ * @str: pointer to char
+ * Return: number of words
+ **/
+int word_counter(char *str)
+{
+	if (str[0] != ' ')
+		return (1 + wordCounterRec(str, 0));
+	return (wordCounterRec(str, 0));
+}
+/**
+ * strtow - splits a string into words.
+ * @str: string to be splitted
+ * Return: pointer to an array of strings (words) or null
+ **/
 char **strtow(char *str)
 {
-	int i = 0, j = 0, k = 0;
-	int len = 0, count = 0;
-	char **f, *col;
+	char **strDup;
+	int i, n, m, words;
 
-	if (!str || !*str)
-	{
+	if (str == NULL || str[0] == 0)
 		return (NULL);
-	}
-
-	while (*(str + i))
-	{
-		if (*(str + i) != ' ')
-		{
-			if (*(str + i + 1) == ' ' || *(str + i + 1) == 0)
-			{
-				count += 1;
-			}
-		}
-		i++;
-	}
-
-	if (count == 0)
-	{
+	words = word_counter(str);
+	if (words < 1)
 		return (NULL);
-	}
-	count += 1;
-	f = malloc(sizeof(char *) * count);
-
-	if (!f)
-	{
+	strDup = malloc(sizeof(char *) * (words + 1));
+	if (strDup == NULL)
 		return (NULL);
-	}
 	i = 0;
-
-	while (*str)
+	while (i < words && *str != '\0')
 	{
-		while (*str == ' ' && *str)
+		if (*str != ' ')
 		{
-			str++;
-		}
-		len = 0;
-
-		while (*(str + len) != ' ' && *(str + len))
-		{
-			len += 1;
-		}
-		len += 1;
-		col = malloc(sizeof(char) * len);
-
-		if (!col)
-		{
-			for (k = j - 1; k >= 0; k--)
+			n = 0;
+			while (str[n] != ' ')
+				n++;
+			strDup[i] = malloc(sizeof(char) * (n + 1));
+			if (strDup[i] == NULL)
 			{
-				free(f[k]);
+				while (--i >= 0)
+					free(strDup[--i]);
+				free(strDup);
+				return (NULL);
 			}
-			free(f);
-			return (NULL);
+			m = 0;
+			while (m < n)
+			{
+				strDup[i][m] = *str;
+				m++, str++;
+			}
+			strDup[i][m] = '\0';
+			i++;
 		}
-
-		for (k = 0; k < (len - 1);  k++)
-		{
-			*(col + k) = *(str++);
-		}
-		*(col + k) = '\0';
-		*(f + j) = col;
-
-		if (j < (count - 1))
-		{
-			j++;
-		}
+		str++;
 	}
-	*(f + j) = NULL;
-	return (f);
-} /*yes*/
-
+	strDup[i] = '\0';
+	return (strDup);
+}
